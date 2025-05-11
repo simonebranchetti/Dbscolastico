@@ -1,0 +1,27 @@
+CREATE TABLE IF NOT EXISTS`Studenti`(
+    `id_studente` BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `nome_studente` CHAR(255) NOT NULL,
+    `cognome_studente` CHAR(255) NOT NULL,
+    `voti` BIGINT NOT NULL,
+    `data_voto` DATE NOT NULL
+);
+CREATE TABLE IF NOT EXISTS `Materie`(
+    `id_materia` BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `nome_materia` CHAR(255) NOT NULL
+);
+CREATE TABLE IF NOT EXISTS `Docenti`(
+    `id_docente` BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `nome_docente` CHAR(255) NOT NULL,
+    `cognome_docente` CHAR(255) NOT NULL,
+    `id_materia` BIGINT NOT NULL,
+    foreign key(id_materia) REFERENCES Materie(id_materia)
+);
+CREATE TABLE IF NOT EXISTS `Voti`(
+    `id_voto` BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `id_studente` BIGINT NOT NULL,
+    `id_materia` BIGINT NOT NULL,
+    `voto` BIGINT NOT NULL,
+    foreign key(id_studente) REFERENCES Studenti(id_studente),
+    foreign key(id_materia) REFERENCES Materie(id_materia)
+);
+

@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS `Docenti`(
     `nome_docente` CHAR(255) NOT NULL,
     `cognome_docente` CHAR(255) NOT NULL,
     `id_materia` BIGINT NOT NULL,
+    classe int not null,
     foreign key(id_materia) REFERENCES Materie(id_materia)
 );
 CREATE TABLE IF NOT EXISTS `Voti`(
